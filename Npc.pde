@@ -8,9 +8,10 @@ class Npc
   TextBox dialogue;
   Animation npcAnimation;
   boolean clicked;
-  String futureText;
+  String[] futureText;
+  int timesClickedOn = 0;
 
-  Npc(float pPosX, float pPosY, int pNpcWidth, int pNpcHeight, String pNpcImgName, TextBox pDialogue, String pFutureText,  Animation pNpcAnimation)
+  Npc(float pPosX, float pPosY, int pNpcWidth, int pNpcHeight, String pNpcImgName, TextBox pDialogue, String[] pFutureText,  Animation pNpcAnimation)
   {
      posX = pPosX;
      posY = pPosY;
@@ -37,14 +38,11 @@ class Npc
       rect(posX,posY,npcWidth,npcHeight);
     }
     
-    if(hover() )//&& mousePressed && !clicked)
+    if(hover() && mousePressed && !clicked && timesClickedOn < futureText.length)
     {
-     //clicked = true;
-     dialogue.boxText = futureText;
-    }
-    else
-    {
-       dialogue.boxText = "hey";
+       clicked = true;
+       dialogue.boxText = futureText[timesClickedOn];
+       timesClickedOn++;
     }
     dialogue.update();
   }

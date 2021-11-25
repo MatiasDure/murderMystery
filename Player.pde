@@ -41,7 +41,8 @@ class Player
   
   void update() { 
 
-    if (mousePressed && !isMoving && !inventory.overButton() && !inventory.overInventoryBox() && !pot.mouseHover())
+    if (mousePressed && !isMoving && !inventory.overButton() 
+        && !inventory.overInventoryBox() && !pot.mouseHover() && !wife.hover() && !butler.hover() && !maid.hover() && !cat.hover() && !brother.hover())
     {
       translateX = mouseX - playerWidth/2 + 175;
       translateY = mouseY - playerHeight/2;

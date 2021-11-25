@@ -166,10 +166,26 @@ class Screen {
           inventory.update();
           
           //takes you to the choose your murderer screen 
-          if(chooseButton.hover() && mousePressed && !chooseButton.clicked)
+          if(chooseButton.hover())
           {
-            currentScreen = 15;
-            chooseButton.clicked = true;
+            if(chooseButton.boxWidth != 149)
+            {
+              chooseButton.boxWidth = 149;
+              chooseButton.boxHeight = 100;
+            }
+            if(mousePressed && !chooseButton.clicked)
+            {
+              currentScreen = 15;
+              chooseButton.clicked = true;
+            }
+          }
+          else
+          {
+            if(chooseButton.boxWidth != 139)
+            {
+              chooseButton.boxWidth = 139;
+              chooseButton.boxHeight = 90;
+            }
           }
           chooseButton.update();
       }
