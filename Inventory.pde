@@ -14,7 +14,7 @@ class Inventory
   boolean diaryIsOpen;
   boolean collectedBasementKey;
   boolean collectedAtticKey;
-  boolean collectedScrewDriver;
+  boolean collectedMasterBedroomKey;
   
   Inventory()
   {
@@ -76,11 +76,11 @@ class Inventory
             clicked = true; 
         }
      }
-     if(!collectedScrewDriver || !collectedAtticKey || !collectedBasementKey)
+     if(!collectedMasterBedroomKey || !collectedAtticKey || !collectedBasementKey)
      {
        for(int i=0; i<itemsInInventory.size();i++)
        {
-        if(!collectedScrewDriver && itemsInInventory.get(i).identifier == "screwDriver") collectedScrewDriver = true;
+        if(!collectedMasterBedroomKey && itemsInInventory.get(i).identifier == "keyMasterBedroom") collectedMasterBedroomKey = true;
         if(!collectedAtticKey && itemsInInventory.get(i).identifier == "keyAttic") collectedAtticKey = true;
         if(!collectedBasementKey && itemsInInventory.get(i).identifier == "keyBasement")collectedBasementKey = true;
        }
@@ -88,6 +88,7 @@ class Inventory
      
      if(collectedAtticKey && screens[12].locked) screens[12].locked = false;
      if(collectedBasementKey && screens[9].locked) screens[9].locked = false;
+     if(collectedMasterBedroomKey && screens[10].locked) screens[10].locked = false;
      
   }
   

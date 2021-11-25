@@ -23,7 +23,7 @@ class Item
   Item(String pItemPath ,float pXPos, float pYPos, int pItemWidth, int pItemHeight, boolean pDiary, boolean pHiddenItem, InventoryItem pItemInv)
   {
     itemPath = pItemPath;
-    if(pItemPath == "items/pot.png") otherImg = loadImage("items/potBroken.png");
+    if(pItemPath == "items/pot.png" || pItemPath == "items/pot2.png") otherImg = loadImage("items/potBroken.png");
     itemImg = loadImage(pItemPath);
     xPos = pXPos;
     yPos = pYPos;
@@ -47,7 +47,7 @@ class Item
   void update()
   {
     //checking if item is already collected and adding it to array
-    if(playerHover() && !collected && !hiddenItem && itemPath != "items/pot.png")
+    if(playerHover() && !collected && !hiddenItem && itemPath != "items/pot.png" && itemPath != "items/pot2.png")
     {
       if(diary) inventory.diariesInInventory.add(itemInv); 
       else inventory.itemsInInventory.add(itemInv);
@@ -83,6 +83,13 @@ class Item
       itemImg = otherImg;
       hoverable = false;
       keyAttic.hiddenItem = false;
+      clicked = true;
+    }
+    if(itemPath == "items/pot2.png" && mouseHover() && mousePressed && !clicked)
+    {
+      itemImg = otherImg;
+      hoverable = false;
+      keyMasterBedroom.hiddenItem = false;
       clicked = true;
     }
     if(!collected && !hiddenItem) image(itemImg,xPos,yPos,itemWidth,itemHeight);
